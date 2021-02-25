@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import LogIn from '../components/LogIn.vue'
 import SignUp from '../views/SignUp.vue'
+import Komentari from '../views/Comments.vue'
 import PojedinacnaKategorija from '../components/PojedinacnaKategorija.vue'
 Vue.use(VueRouter)
 
@@ -16,6 +17,11 @@ const routes = [
     path:'/SignUp',
     name:'SignUp',
     component: SignUp
+  },
+  {
+    path:'/Comments',
+    name:'Komentari',
+    component: Komentari
   },
   {
     path: '/LogIn',

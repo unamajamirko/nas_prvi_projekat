@@ -1,12 +1,14 @@
 <template>
     <div class="pojedinacni">
-       <div v-for="proizvod in proizvodi" :key="proizvod.pro_id">
-           {{proizvod.pro_naziv}}
+       <div class="image" v-for="proizvod in proizvodi" :key="proizvod.pro_id">
+           <img :src="'data:image/jpg;base64,' + proizvod.pro_img" 
+           alt="something went wrong!" />
+           <h4>{{proizvod.pro_naziv}}</h4>
        </div>
     </div>
 </template>
 <script>
-import axios from 'axios'
+import axios from 'axios';
 export default {
     data(){
         return{
@@ -29,3 +31,14 @@ export default {
     }
 }
 </script>
+<style scoped>
+img{
+    width: 400px;
+    height: auto;
+}
+.image{
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+    justify-items: center;
+}
+</style>
