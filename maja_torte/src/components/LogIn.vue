@@ -1,9 +1,8 @@
 <template>
   <div class="login">
     <div class="input">
-    
-       <input v-model="usernameValue" type="text" placeholder="Username" />
-      
+      <input v-model="usernameValue" type="text" placeholder="Username" />
+
       <input v-model="passwordValue" type="password" placeholder="Password" />
     </div>
 
@@ -14,26 +13,28 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   data() {
     return {
       usernameValue: null,
       passwordValue: null,
-      isAdmin:false
+      isAdmin: false,
     };
   },
   methods: {
     login() {
-            axios.post('http://231j122.mars1.mars-hosting.com/api/login',{
-              username:this.usernameValue,
-              password:this.passwordValue,
-              //isAdmin:this.isAdmin
-            }).then((res) =>{
-              console.log(res);
-              localStorage.setItem('sid', res.data.sid);
-              localStorage.setItem('usr_id', res.data.usr_id);
-            })
+      axios
+        .post("http://231j122.mars1.mars-hosting.com/api/login", {
+          username: this.usernameValue,
+          password: this.passwordValue,
+          //isAdmin:this.isAdmin
+        })
+        .then((res) => {
+          console.log(res);
+          localStorage.setItem("sid", res.data.sid);
+          localStorage.setItem("usr_id", res.data.usr_id);
+        });
     },
   },
 };
@@ -41,7 +42,7 @@ export default {
 
 <style scoped>
 .login {
-   color: white;
+  color: white;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -50,7 +51,7 @@ export default {
   height: 420px;
   padding: 80px 40px;
   box-sizing: border-box;
-  background: transparent; 
+  background: transparent;
 }
 .login input[type="text"],
 .login input[type="password"] {

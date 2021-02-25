@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import LogIn from '../components/LogIn.vue'
 import SignUp from '../views/SignUp.vue'
 import PojedinacnaKategorija from '../components/PojedinacnaKategorija.vue'
+import Proizvod from '../components/Proizvod.vue'
+import Porudzbenica from '../components/Porudzbenica.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -28,11 +30,18 @@ const routes = [
     name: PojedinacnaKategorija,
     component:PojedinacnaKategorija
   },
-  /* {
-    path: '/kids/singleLesson/:id',
-    name: 'KidsLesson',
-    component: KidsLesson
-  }, */
+  {
+    path:'/Proizvod/:id',
+    name: Proizvod,
+    component:Proizvod
+  },
+  {
+    path: '/Porudzbenica',
+    name: 'Porudzbenica',
+    component: Porudzbenica
+
+  },
+ 
 
   {
     path: '/about',
