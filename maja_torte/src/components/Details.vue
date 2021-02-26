@@ -11,7 +11,7 @@ export default {
         return{
           product: [],
           picture: [],
-          proizvod_id: ''
+          proizvod_id: window.location.pathname
         }
     },
     methods: {
