@@ -15,15 +15,17 @@
 
 <script>
 import axios from 'axios';
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
       usernameValue: null,
       passwordValue: null,
-      isAdmin:false
+      isAdmin:false,
     };
   },
   methods: {
+    ...mapActions(["change_login"]),
     login() {
             axios.post('http://231j122.mars1.mars-hosting.com/api/login',{
               username:this.usernameValue,
@@ -33,6 +35,14 @@ export default {
               console.log(res);
               localStorage.setItem('sid', res.data.sid);
               localStorage.setItem('usr_id', res.data.usr_id);
+               if(res.data.message === "OK" ){
+            this.change_login(true);
+            // this.$router.push("/");
+            this.$router.push({ path: "/" });
+          }else{
+            this.change_login(false);
+            this.$router.go();
+          }
             })
     },
   },

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <router-link class="link" to="/LogIn">LogIn</router-link> | 
-   <router-link  class="link" to="/SignUp">SignUp</router-link>
+    <!-- <router-link class="link" to="/LogIn">LogIn</router-link> | 
+   <router-link  class="link" to="/SignUp">SignUp</router-link> -->
    <Kategorije/>
   </div>
 </template>

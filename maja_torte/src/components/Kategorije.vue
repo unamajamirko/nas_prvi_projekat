@@ -1,6 +1,7 @@
 <template>
     <div class="proizvodi">
-        <router-link  class="links" v-bind:to="'/PojedinacnaKategorija/' + kategorija.kat_id" v-for="kategorija in kategorije" :key="kategorija.kat_id" >
+        <router-link  class="links" v-bind:to="'/PojedinacnaKategorija/' + 
+        kategorija.kat_id" v-for="kategorija in kategorije" :key="kategorija.kat_id" >
            <img
                 class="img"
                 :src="'data:image/jpg;base64,' + kategorija.kat_img"
