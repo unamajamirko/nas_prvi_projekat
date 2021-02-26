@@ -1,7 +1,17 @@
 <template>
   <div class="porudzbenica">
     <div>
-      <h2>Naručivanje:</h2>
+      <div class="nacin">
+        <p>
+          Možete nas kontaktirati na telefon: 011111111,
+          <br />
+          Ili na e-mail adresu:<a href="mm@gmail.com">mm@gmail.com</a>
+        </p>
+      </div>
+      <div>
+        <Proizvod />
+      </div>
+      <h2>OVAJ PROIZVOD MOŽETE PORUČITI I PREKO NAŠEG SAJTA PORUDZBENICOM:</h2>
       <label for="tezina">Unesite željenu težinu proizvoda: </label>
       <input type="text" v-model="tezina" placeholder="Težina" /><br />
       <br />
@@ -31,11 +41,12 @@
       <p>Napomena:</p>
       <textarea></textarea>
     </div>
-    <button @click="unesiPorudzbinu">Potvrdi</button>
+    <button @click="unesiPorudzbinu">Potvrdi porudzbinu</button>
   </div>
 </template>
 <script>
 import axios from "axios";
+import Proizvod from "../components/Proizvod";
 export default {
   data() {
     return {
@@ -46,6 +57,7 @@ export default {
       telefon: "",
       mail: "",
       grad: "",
+      napomena: "",
     };
   },
   methods: {
@@ -59,14 +71,31 @@ export default {
           grad: this.grad,
           mail: this.mail,
           telefon: this.telefon,
-           usr_id: localStorage.getItem("usr_id"),
+          napomena: this.napomena,
+          pro_id: this.$route.params.id,
+          usr_id: localStorage.getItem("usr_id"),
           sid: localStorage.getItem("sid"),
         })
         .then((res) => {
           console.log(res);
+          console.log(this.$route.params.id);
+        });
+    },
+    logout() {
+      axios
+        .post(
+          "http://231j122.mars1.mars-hosting.com/api/logout?sid=" +
+            localStorage.getItem("sid")
+        )
+        .then((res) => {
+          localStorage.removeItem("sid");
+          console.log(res);
+          this.$router.push("/");
         });
     },
   },
- 
+  components: {
+    Proizvod,
+  },
 };
 </script>
