@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    {{oneProduct}}
+    {{product}}{{proizvod_id}}
   </div>
 </template>
 
@@ -9,20 +9,24 @@ import axios from 'axios';
 export default {
     data(){
         return{
-          oneProduct: [],
-          picture: []
+          product: [],
+          picture: [],
+          proizvod_id: window.location.pathname
         }
     },
     methods: {
         oneProduct(){
           axios.get('http://231j122.mars1.mars-hosting.com/api/proizvod',{
-            params:{pro_od: this.$route.params.id}
+            params:{pro_id: this.proizvod_id}
           }).then(res => {
             console.log(res.data);
-            this.oneProduct = res.data.proizvod;
+            this.product = res.data.proizvod;
             this.picture = res.data.slike;
           })
         }
+    },
+    mounted(){
+      this.oneProduct();
     }
 
 }
