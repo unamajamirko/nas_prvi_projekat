@@ -1,10 +1,14 @@
 <template>
     <div class="pojedinacni">
-       <div class="image" v-for="proizvod in proizvodi" :key="proizvod.pro_id">
-           <img :src="'data:image/jpg;base64,' + proizvod.pro_img" 
-           alt="something went wrong!" />
-           <h4>{{proizvod.pro_naziv}}</h4>
-       </div>
+        <h2>{{type[0].kat_naziv}}</h2>
+            <div class="image" v-for="proizvod in proizvodi" :key="proizvod.pro_id">
+                <router-link  class="links" v-bind:to="'/Details/' +
+                 proizvod.pro_id"   >   
+                        <img :src="'data:image/jpg;base64,' + proizvod.pro_img" 
+                         alt="something went wrong!" />   
+                <h4>{{proizvod.pro_naziv}}</h4>
+                </router-link>
+            </div>
     </div>
 </template>
 <script>
@@ -12,7 +16,8 @@ import axios from 'axios';
 export default {
     data(){
         return{
-            proizvodi:[]
+            proizvodi:[],
+            type: []
         }
     },
     methods:{
@@ -22,10 +27,13 @@ export default {
             }).then((res)=>{
                 console.log(res.data.data);
                 this.proizvodi=res.data.data;
+                console.log(res.data.type);
+                this.type= res.data.type;
             })
-        }
-
+        },
+   
     },
+    
      mounted(){
     this.getProizvodi();
     }

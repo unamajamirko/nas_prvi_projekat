@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import LogIn from '../components/LogIn.vue'
 import SignUp from '../views/SignUp.vue'
 import Komentari from '../views/Comments.vue'
+import LogIn from '../components/LogIn.vue'
 import PojedinacnaKategorija from '../components/PojedinacnaKategorija.vue'
+import Details from '../components/Details.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -17,6 +18,11 @@ const routes = [
     path:'/SignUp',
     name:'SignUp',
     component: SignUp
+  },
+  {
+    path:'/Details',
+    name:'Details',
+    component: Details
   },
   {
     path:'/Comments',
